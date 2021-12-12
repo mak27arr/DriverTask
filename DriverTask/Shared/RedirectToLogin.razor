@@ -1,6 +1,6 @@
 ﻿@inject NavigationManager Navigation
 @code {
-    private readonly string LoginUrl = "authentication/logout";
+    private readonly string LoginUrl = "/login";
 
     [CascadingParameter]
     private Task<AuthenticationState> AuthenticationStateTask { get; set; }

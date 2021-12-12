@@ -12,7 +12,7 @@ namespace DriverTask.Services
         }
         public async Task<CurrentUser> CurrentUserInfo()
         {
-            throw new NotImplementedException
+            return new CurrentUser() { UserName = "Test", Claims = new Dictionary<string, string>(), IsAuthenticated = true };
         }
         public async Task Login(LoginRequest loginRequest)
         {

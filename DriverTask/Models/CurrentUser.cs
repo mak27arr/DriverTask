@@ -1,6 +1,6 @@
 ﻿namespace DriverTask.Models
 {
-    internal class CurrentUser
+    public class CurrentUser
     {
         public bool IsAuthenticated { get; set; }
         public string UserName { get; set; }
