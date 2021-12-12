@@ -1,0 +1,28 @@
+﻿@inject NavigationManager Navigation
+@code {
+    private readonly string LoginUrl = "authentication/logout";
+
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var authenticationState = await AuthenticationStateTask;
+
+            if (authenticationState?.User?.Identity is null || !authenticationState.User.Identity.IsAuthenticated)
+            {
+                var returnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
+
+                if (string.IsNullOrWhiteSpace(returnUrl))
+                    Navigation.NavigateTo(LoginUrl, true);
+                else
+                    Navigation.NavigateTo($"{LoginUrl}?returnUrl={returnUrl}", true);
+            }
+        }catch(Exception ex)
+        {
+            
+        }
+    }
+}
